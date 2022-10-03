@@ -26,8 +26,6 @@ myapp.use(express.static(__dirname + '/UI'));
 myapp.use(bodyParser.urlencoded({ extended:true }))
 myapp.use(bodyParser.json());
 
-myapp.post('/auth/signup',function(){
-client.connect();
 
 const portr = process.env.PORT || 3000;
 
