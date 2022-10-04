@@ -5,8 +5,7 @@ const jwt = require = ('jsonwebtoken');
 const client = new Client({
   connectionString: "postgres://jokzpjaauvnzar:182aeea99b04933bd268fabe6c82a2032e6d99f6586ed740c49e531ffcc882ac@ec2-52-207-15-147.compute-1.amazonaws.com:5432/d7rpi3hmsrqkse",
   ssl: {
-     rejectUnauthorized : false,
-  },
+     rejectUnauthorized : false },
 }) 
 
 client.connect();
@@ -22,9 +21,9 @@ next();
 
 myapp.get('/', function(req, res) {
    res.sendFile( __dirname);
-   res.sendFile(path.join(__dirname + '/UI/index.html'));
+   res.sendFile(path.join(__dirname + '/samapp/src/App.js'));
 });
-myapp.use(express.static(__dirname + '/UI'));
+myapp.use(express.static(__dirname + '/samapp'));
 myapp.use(bodyParser.urlencoded({ extended:true }))
 myapp.use(bodyParser.json());
 
