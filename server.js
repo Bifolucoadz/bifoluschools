@@ -20,9 +20,9 @@ next();
 
 myapp.get('/', function(req, res){
    res.sendFile( __dirname);
-   res.sendFile(path.join(__dirname + '/commerce/index.html'));
+   res.sendFile(path.join(__dirname + '/schools/index.html'));
 });
-myapp.use(express.static(__dirname + '/commerce'));
+myapp.use(express.static(__dirname + '/schools'));
 
 myapp.post('/auth/signup',function(){
 client.connect();
