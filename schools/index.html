@@ -86,7 +86,7 @@ mydata['password'] = $(#password).val();
 mydata['email'] = $(#email).val();
 
 $.ajax({
-url: "/auth/signup",
+url: "/schools/signup",
 type: "POST",
 data: new FormData(this),
 contentType: false,
