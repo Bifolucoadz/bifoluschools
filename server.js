@@ -43,11 +43,11 @@ var reg_date = req.body.reg_date;
 var last_login = req.body.last_login;
 var maId = 3;
 
-user['email'] = mamail;
-user['secretKey'] = mapassword;
+user['email'] = email;
+user['password'] = password;
 
 var newId = respf.rows[0].id + 1;
-const text = "INSERT INTO accounts(id,name,parents_name,phone_no,address,dob,username,password,email) VALUES ('"+ newId +"','"+ username +"','"+ password +"','"+ email +"') RETURNING id;";
+const text = "INSERT INTO accounts(id,name,parents_name,number,address,date_of_birth,username,password,email,reg_date,last_login) VALUES ('","','"+ name +"','"+ parents_name +"','"+ phone_no +"','"+ address +"','"+ dob +"','"+ username +"','"+ password +"','"+ email +"') RETURNING id;";
 
 client.query(text, (err, resp) => {
 if (err){
@@ -59,11 +59,17 @@ res.send(datae);
 datae['status'] = 200;
 var arr = {};
 arr['id'] = resp.rows[0].id;
-arr['first_name'] = username;
+arr['name'] = name;
+arr['parents_name'] = parents_name;
+arr['phone_no'] = phone_no;
+arr['address'] = address;
+arr['dob'] = dob;
+arr['username'] = username;
+arr['password'] = password;
 arr['email'] = email;
-arr['token'] = token;
-arr['secretKey'] = password;
 arr['reg_date'] = reg_date;
+
+
 
 datae['data'] = arr;
 res.send(datae);
