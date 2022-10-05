@@ -4,7 +4,9 @@ var bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const client = new Client({
   connectionString: "postgres://jokzpjaauvnzar:182aeea99b04933bd268fabe6c82a2032e6d99f6586ed740c49e531ffcc882ac@ec2-52-207-15-147.compute-1.amazonaws.com:5432/d7rpi3hmsrqkse",
-  ssl: true,
+  ssl: {
+	 rejectUnauthorized: false
+  },
 }) 
 
 client.connect();
@@ -29,6 +31,11 @@ client.connect();
 
 var datae = {};
 var user = {};
+var name = req.body.name;
+var parents_name = req.body.parents_name;
+var phone_no = req.body.phone_no;
+var address = req.body.address;
+var dob = req.body.dob;
 var username = req.body.username;
 var password = req.body.password;
 var email= req.body.email;
@@ -40,7 +47,7 @@ user['email'] = mamail;
 user['secretKey'] = mapassword;
 
 var newId = respf.rows[0].id + 1;
-const text = "INSERT INTO accounts(id,username,password,email,reg_date,last_login,) VALUES ('"+ newId +"','"+ username +"','"+ password +"','"+ email +"','"+ reg_date +"','"+ last_login +"') RETURNING id;";
+const text = "INSERT INTO accounts(id,name,parents_name,phone_no,address,dob,username,password,email) VALUES ('"+ newId +"','"+ username +"','"+ password +"','"+ email +"') RETURNING id;";
 
 client.query(text, (err, resp) => {
 if (err){
