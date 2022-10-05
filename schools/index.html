@@ -57,45 +57,43 @@ width:600px;
 <h3>USERNAME: </h3><br/><input type="text" id="username" /><br/>
 <h3>PASSWORD: </h3><br/><input type="password" id="password" /><br/>
 <h3>EMAIL: </h3><br/><input type="text" id="email" /><br/><br/><br/>
-<button onclick= "funct()">ENROL NOW</button>
+<button onclick= "funct()" id="funct">ENROL NOW</button>
 </center>
 </form>
 <script>
-function funct(){
-var name = document.getElementById("name").value;
-var parents_name = document.getElementById("parents_name").value;
-var phone_no = document.getElementById("phone_no").value;
-var address = document.getElementById("address").value;
-var dob = document.getElementById("dob").value;
-var username = document.getElementById("username").value;
-var password = document.getElementById("password").value;
-var email = document.getElementById("email").value;
+$(document).ready(function (e) {
+$("#funct").on('click',(function(e) {
 
- var kJson = {};
- kJson['name'] = name;
- kJson['parents_name'] = parents_name;
- kJson['phone_no'] = phone_no;
- kJson['address'] = address;
- kJson['dob'] = dob;
- kJson['username'] = username;
- kJson['password'] = password;
- kJson['email'] = email;
- var b = JSON.stringify(kJson);
-const api = '/auth/signup?n=' + b;
 
-var xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange = function(){
-if (this.readyState == 4 && this.status == 200){
-var myObj = this.responseText;
-console.log(myObj);
+$(#preview).empty();
+$('#loading').show();
+var mydata = {};
+mydata['name'] = $(#name).val();
+mydata['parents_name'] = $(#parents_name).val();
+mydata['address'] = $(#address).val();
+mydata['dob'] = $(#dob).val();
+mydata['username'] = $(#username).val();
+mydata['password'] = $(#password).val();
+mydata['email'] = $(#email).val();
+
+$.ajax({
+url: "/auth/signup",
+type: "POST",
+data: new FormData(this),
+contentType: false,
+processData:false,
+success: function(data)
+{
+$('#loading').hide();
+console.log(data);
+
+$("#preview").html('<h2>' + data + '</h2>');
+
 }
-};
-xmlhttp.open("GET", api, true);
-xmlhttp.send();
-};
-</script>
-
-</nav>
+});
+}));
+});
+</script></nav>
 
 </body>
 </html>
