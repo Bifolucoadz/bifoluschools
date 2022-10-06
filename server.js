@@ -47,7 +47,7 @@ user['email'] = email;
 user['password'] = password;
 
 var newId = respf.rows[0].id + 1;
-const text = "INSERT INTO accounts(id,name,parents_name,number,address,date_of_birth,username,password,email,created_on,last_login) VALUES ('','"+ name +"','"+ parents_name +"','"+ phone_no +"','"+ address +"','"+ dob +"','"+ username +"','"+ password +"','"+ email +"') RETURNING id;";
+const text = "INSERT INTO accounts(id,name,parents_name,number,address,date_of_birth,username,password,email,created_on,last_login) VALUES (DEFAULT,'"+ name +"','"+ parents_name +"','"+ phone_no +"','"+ address +"','"+ dob +"','"+ username +"','"+ password +"','"+ email +"') RETURNING id;";
 
 client.query(text, (err, resp) => {
 if (err){
