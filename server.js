@@ -26,7 +26,7 @@ myapp.get('/', function(req, res){
 });
 myapp.use(express.static(__dirname + '/schools'));
 
-myapp.post('/auth/signup',function(){
+myapp.post('/schools/signup',function(){
 client.connect();
 
 var datae = {};
@@ -72,6 +72,7 @@ arr['reg_date'] = reg_date;
 
 
 datae['data'] = arr;
+datae['message'] = "Your details hav been submitted successfully";
 res.send(datae);
 }
 });
