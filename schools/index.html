@@ -46,7 +46,7 @@ width:600px;
 
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 
 <body>
@@ -84,9 +84,10 @@ mydata['dob'] = $(#dob).val();
 mydata['username'] = $(#username).val();
 mydata['password'] = $(#password).val();
 mydata['email'] = $(#email).val();
-
+mydata['reg_date'] = $Date.now();
+mydata['last_login'] = $Date.now();
 $.ajax({
-url: "/auth/signup",
+url: "/schools/signup",
 type: "POST",
 data: new FormData(this),
 contentType: false,
