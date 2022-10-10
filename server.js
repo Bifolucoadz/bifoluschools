@@ -64,14 +64,7 @@ arr['id'] = resp.rows[0].id;
 arr['name'] = name;
 arr['parents_name'] = parents_name;
 arr['phone_no'] = phone_no;
-arr['address'] = address;
-arr['dob'] = dob;
-arr['username'] = username;
-arr['password'] = password;
-arr['email'] = email;
 arr['reg_date'] = reg_date;
-
-
 
 datae['data'] = arr;
 datae['message'] = "Your details hav been submitted successfully";
