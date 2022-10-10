@@ -32,7 +32,6 @@ myapp.post('/schools/signup',function(){
 client.connect();
 
 var datae = {};
-var user = {};
 var name = req.body.name;
 var parents_name = req.body.parents_name;
 var phone_no = req.body.phone_no;
@@ -45,9 +44,6 @@ var reg_date = req.body.reg_date;
 var last_login = req.body.last_login;
 var maId = 3;
 
-user['email'] = email;
-user['password'] = password;
-
 var newId = respf.rows[0].id + 1;
 const text = "INSERT INTO accounts(id,name,parents_name,number,address,date_of_birth,username,password,email,created_on,last_login) VALUES (DEFAULT,'"+ name +"','"+ parents_name +"','"+ phone_no +"','"+ address +"','"+ dob +"','"+ username +"','"+ password +"','"+ email +"') RETURNING id;";
 
@@ -57,15 +53,10 @@ datae['status']= 404;
 datae['erroe'] = "Error: Problem occur when signing up...";
 res.send(datae);
 }else{
-
-datae['status'] = 200;
 var arr = {};
-arr['id'] = resp.rows[0].id;
 arr['name'] = name;
-arr['parents_name'] = parents_name;
 arr['phone_no'] = phone_no;
 arr['reg_date'] = reg_date;
-
 datae['data'] = arr;
 datae['message'] = "Your details hav been submitted successfully";
 res.send(datae);
