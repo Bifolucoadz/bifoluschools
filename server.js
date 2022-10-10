@@ -25,6 +25,8 @@ myapp.get('/', function(req, res){
    res.sendFile(path.join(__dirname + '/schools/index.html'));
 });
 myapp.use(express.static(__dirname + '/schools'));
+myapp.use(bodyParser.urlencoded({ extended:true }))
+myapp.use(bodyParser.json());
 
 myapp.post('/schools/signup',function(){
 client.connect();
