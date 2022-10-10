@@ -53,12 +53,11 @@ datae['status']= 404;
 datae['erroe'] = "Error: Problem occur when signing up...";
 res.send(datae);
 }else{
+datae['status'] = 200;
 var arr = {};
 arr['name'] = name;
-arr['phone_no'] = phone_no;
-arr['reg_date'] = reg_date;
+arr['message'] = "Your details hav been submitted successfully";
 datae['data'] = arr;
-datae['message'] = "Your details hav been submitted successfully";
 res.send(datae);
 }
 });
