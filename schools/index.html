@@ -83,6 +83,7 @@ mydata['last_login'] = $Date.now();
 $.ajax({
 url: "/schools/signup",
 type: "POST",
+data: JSON.stringify(mydata),
 contentType: false,
 processData:false,
 success: function(data)
